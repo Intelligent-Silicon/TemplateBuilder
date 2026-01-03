@@ -18,7 +18,11 @@ grp = Group Procedure
 
 The rest is the name of the procedure.
 
-Why is this public. This is all I have left to prove what I had been doing for about 5 years. 
+Why is this public? 
+
+This is all I have left to prove what I had been doing for about 5 years.
+
+ 
 Prior to this, I'd probably spent another 5 years experimenting with different apps (exe's) and templates to explore ways to develop an app that could write templates. This was pursued first because of the problem which exists that its currently impossible to secure a template and prevent it from being copied, where as exe's can be secured more easily to prevent them from being copied. 
 
 Why is this important? Here in Exeter if you cant prove what you have been doing using social media, the people of Exeter and quite likely elsewhere in the UK will automatically assume the worst which is you have been in prison for a number of years. Thanks Zuck!
