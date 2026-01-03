@@ -27,11 +27,11 @@ Prior to this, I'd probably spent another 5 years experimenting with different a
 
 Why is this important? Here in Exeter if you cant prove what you have been doing using social media, the people of Exeter and quite likely elsewhere in the UK will automatically assume the worst which is you have been in prison for a number of years. Thanks Zuck!
 
-So in order to avoid any further personal trouble and attacks because the state both local and nation will not deviate from its processes, I'm effectively making it known something which will benefit some savvy programmers elsewhere in the world. And the UK wonder's why its going down the pan, when people are forced to give away their competitive advantage and years of work!
+So in order to avoid any further personal trouble and attacks because the state both local and national will not deviate from its processes, because they exist for a reason, and I'm coming up to a year (Jan 4th) rough sleeping on the streets, I'm effectively making it known something which will benefit some savvy programmers elsewhere in the world. And the UK then wonder's why its going down the pan, when people are forced to give away their competitive advantage and years of work!	
 
-At the same time, it pains me to see years of work go to waste, so maybe someone else will see how the templates can be used to build themselves and then expanded with #RunDll especialy in todays world of very long Markov Chains aka Large Language Models (LLM)'s like ChatGPT.
+At the same time, it pains me to see years of work go to waste, especially if I'm not around to see it built, so maybe someone else will see how the templates can be used to build themselves and then expanded with #RunDll especialy in todays world of very long Markov Chains aka Large Language Models (LLM)'s like ChatGPT.
 
-This also means, the template builder could generate code in any language for any platform, because the slow esoteric nature of the template language could be accelerated quickly by virtue of using a template to build further templates, by just filling in some prompt's. Something every Clarion programmer knows and generally loves which is why they still use Clarion.
+This also means, the template builder could generate code in any language for any platform, because the slow esoteric nature of the template language can be accelerated quickly by virtue of using a template to build further templates, by just filling in some prompt's. Something every Clarion programmer knows and generally loves which is why they still use Clarion.
 
 
 ```
