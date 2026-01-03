@@ -1,0 +1,341 @@
+oup)
+      #Declare(%PromptParam1Method),Multi
+      #Declare(%PromptParam1PromptTextText)
+      #Declare(%PromptParam1PromptTextString)
+      #Declare(%PromptParam1PromptTextGroup)
+      #Declare(%PromptParam2Enable)
+      #Declare(%PromptParam2EnableText)
+      #Declare(%PromptParam2EnableString)
+      #Declare(%PromptParam2EnableGroup)
+      #Declare(%PromptParam2Method),Multi
+      #Declare(%PromptParam2PromptTextText)
+      #Declare(%PromptParam2PromptTextString)
+      #Declare(%PromptParam2PromptTextGroup)
+      #Declare(%PromptParam3Enable)
+      #Declare(%PromptParam3EnableText)
+      #Declare(%PromptParam3EnableString)
+      #Declare(%PromptParam3EnableGroup)
+      #Declare(%PromptParam3Method),Multi
+      #Declare(%PromptParam3PromptTextText)
+      #Declare(%PromptParam3PromptTextString)
+      #Declare(%PromptParam3PromptTextGroup)
+      #Declare(%PromptParam4Enable)
+      #Declare(%PromptParam4EnableText)
+      #Declare(%PromptParam4EnableString)
+      #Declare(%PromptParam4EnableGroup)
+      #Declare(%PromptParam4Method),Multi
+      #Declare(%PromptParam4PromptTextText)
+      #Declare(%PromptParam4PromptTextString)
+      #Declare(%PromptParam4PromptTextGroup)
+      #Declare( %ISTB3CodePromptValidateErrorMessage  )
+      #Call(%ISTB3grpPromptTypeParamsWhenAccepted,%ISTB3CodePromptType)
+      #EndPrepare
+      #Sheet,HScroll
+      #Tab('0&1 #Prompt')
+      #Display('''String''')
+      #Prompt('',@s255),%ISTB3CodePromptString,At(10,,170)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptString),'%ISTB3valStringEncapsulationRemove Failed')
+      #Validate(%ISTB3valValidateStringConstant(%ISTB3CodePromptString),'%ISTB3valValidateStringConstant Failed')
+      #Validate(%ISTB3valStringEncapsulationAddRequired(%ISTB3CodePromptString),'%ISTB3valStringEncapsulationAddRequired Failed')
+      #Prompt('Type',Drop( %ISTB3grpPromptTypes() )),%ISTB3CodePromptType,At(60,,120)
+      #Enable(%ISTB3CodePromptType <> %LastISTB3CodePromptType)
+      #Button('Refresh Parameters'),At(10,,170,12),WhenAccepted(%ISTB3grpPromptTypeParamsWhenAccepted(%ISTB3CodePromptType))
+      #EndButton
+      #EndEnable
+      #Enable(%PromptParam1Enable)
+      #Boxed( 'Param 1' )
+      #Prompt('Method',From( %PromptParam1Method )),%ISTB3CodePromptTypeParam1Method,At(60,,120)
+      #Enable(%ISTB3CodePromptTypeParam1Method = %PromptParam1EnableText )
+      #Display( %PromptParam1PromptTextText )
+      #Prompt('',Text),%ISTB3CodePromptTypeParam1Text,At(10,,170,30)
+      #Validate(%ISTB3valValidatePromptTypeParam1(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam1Method,%ISTB3CodePromptTypeParam1Text),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam1Method = %PromptParam1EnableString )
+      #Display( %PromptParam1PromptTextString )
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam1String,At(10,,170,10)
+      #Validate(%ISTB3valValidatePromptTypeParam1(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam1Method,%ISTB3CodePromptTypeParam1String),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam1Method = %PromptParam1EnableGroup )
+      #Button('Default #Group Procedure Name'),At(10,,170,10)
+      #EndButton
+      #Display( %PromptParam1PromptTextGroup )
+      #Prompt('',Procedure),%ISTB3CodePromptTypeParam1Group,At(10,,170),Prop(Prop:DropWidth,240)
+      #Validate(%ISTB3valValidateNamingSchemaGroup(%ISTB3CodePromptTypeParam1Group),'Invalid Naming Schema')
+      #Display('%Symbol Name / %Parameter')
+      #Button('Parameters'),Multi(%ISTB3CodePromptTypeParam1ParamList,%ISTB3CodePromptTypeParam1ParamListSymbolParam),Inline,At(10,,170,30)
+      #Sheet, HScroll
+      #Tab('0&1 %Parameter')
+      #Display('')
+      #Display('%Symbol Name / %Parameter')
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam1ParamListSymbolParam,Req,At(10,,175,10)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam1ParamListSymbolParam),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam1ParamListSymbolParam))')
+      #Validate(%ISTB3valValidateNamingSchemaSymbolPrefix(%ISTB3CodePromptTypeParam1ParamListSymbolParam),'Invalid Naming Schema')
+      #Validate(%ISTB3valValidateSymbol(%ISTB3CodePromptTypeParam1ParamListSymbolParam),'Invalid Naming Schema')
+      #EndTab
+      #Tab('0&2 Debug')
+      #Display('')
+      #EndTab
+      #EndSheet
+      #EndButton
+      #EndEnable
+      #EndBoxed
+      #EndEnable
+      #Enable(%PromptParam2Enable)
+      #Boxed('Param 2')
+      #Prompt('Method',From( %PromptParam2Method )),%ISTB3CodePromptTypeParam2Method,At(60,,120)
+      #Enable(%ISTB3CodePromptTypeParam2Method = %PromptParam2EnableText )
+      #Display( '%PromptParam2PromptTextText' )
+      #Prompt('',Text),%ISTB3CodePromptTypeParam2Text,At(10,,170,30)
+      #Validate(%ISTB3valValidatePromptTypeParam2(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam2Method,%ISTB3CodePromptTypeParam2Text),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam2Method = %PromptParam2EnableString )
+      #Display( '%PromptParam2PromptTextString' )
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam2String,At(10,,170,10)
+      #Validate(%ISTB3valValidatePromptTypeParam2(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam2Method,%ISTB3CodePromptTypeParam2String),%ISTB3CodePromptValidateErrorMessage)
+      #Validate(%ISTB3valValidatePromptTypeParam2Param3(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam2Method,%ISTB3CodePromptTypeParam2String,%ISTB3CodePromptTypeParam3Method,%ISTB3CodePromptTypeParam3String),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam2Method = %PromptParam2EnableGroup )
+      #Button('Default #Group Procedure Name'),At(10,,170,10)
+      #EndButton
+      #Display( '%PromptParam2PromptTextGroup' )
+      #Prompt('',Procedure),%ISTB3CodePromptTypeParam2Group,At(10,,170),Prop(Prop:DropWidth,240)
+      #Validate(%ISTB3valValidateNamingSchemaGroup(%ISTB3CodePromptTypeParam2Group),'Invalid Naming Schema')
+      #Display('%Symbol Name / %Parameter')
+      #Button('Parameters'),Multi(%ISTB3CodePromptTypeParam2ParamList,%ISTB3CodePromptTypeParam2ParamListSymbolParam),Inline,At(10,,170,30)
+      #Sheet, HScroll
+      #Tab('0&1 %Parameter')
+      #Display('')
+      #Display('%Symbol Name / %Parameter')
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam2ParamListSymbolParam,Req,At(10,,175,10)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam2ParamListSymbolParam),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam2ParamListSymbolParam))')
+      #Validate(%ISTB3valValidateNamingSchemaSymbolPrefix(%ISTB3CodePromptTypeParam2ParamListSymbolParam),'Invalid Naming Schema')
+      #Validate(%ISTB3valValidateSymbol(%ISTB3CodePromptTypeParam2ParamListSymbolParam),'Invalid Naming Schema')
+      #EndTab
+      #Tab('0&2 Debug')
+      #Display( '' )
+      #EndTab
+      #EndSheet
+      #EndButton
+      #EndEnable
+      #EndBoxed
+      #EndEnable
+      #Display('%Symbol')
+      #Prompt('',@s255),%ISTB3CodePromptSymbol,At(10,,170)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptSymbol),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptSymbol))')
+      #Validate(%ISTB3valValidateNamingSchemaSymbolPrefix(%ISTB3CodePromptTypeParam2ParamListSymbolParam),'Invalid Naming Schema')
+      #Validate(%ISTB3valValidateSymbol(%ISTB3CodePromptTypeParam2ParamListSymbolParam),'Invalid Naming Schema')
+      #EndTab
+      #Tab('0&2 #Prompt (2/2)')
+      #Enable(%ISTB3CodePromptType = %LastISTB3CodePromptType)
+      #Enable(%PromptParam3Enable)
+      #Boxed('Param 3')
+      #Prompt('Method',From( %PromptParam3Method )),%ISTB3CodePromptTypeParam3Method,At(60,,120)
+      #Enable(%ISTB3CodePromptTypeParam3Method = %PromptParam3EnableText )
+      #Display( %PromptParam3PromptTextText )
+      #Prompt('',Text),%ISTB3CodePromptTypeParam3Text,At(10,,170,30)
+      #Validate(%ISTB3valValidatePromptTypeParam3(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam3Method,%ISTB3CodePromptTypeParam3Text),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam3Method = %PromptParam3EnableString )
+      #Display( %PromptParam3PromptTextString )
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam3String,At(10,,170,10)
+      #Validate(%ISTB3valValidatePromptTypeParam3(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam3Method,%ISTB3CodePromptTypeParam3String),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam3Method = %PromptParam3EnableGroup )
+      #Button('Default #Group Procedure Name'),At(10,,170,10)
+      #EndButton
+      #Display( %PromptParam3PromptTextGroup )
+      #Prompt('',Procedure),%ISTB3CodePromptTypeParam3Group,At(10,,170),Prop(Prop:DropWidth,240)
+      #Validate(%ISTB3valValidateNamingSchemaGroup(%ISTB3CodePromptTypeParam3Group),'Invalid Naming Schema')
+      #Display('%Symbol Name / %Parameter')
+      #Button('Parameters'),Multi(%ISTB3CodePromptTypeParam3ParamList,%ISTB3CodePromptTypeParam3ParamListSymbolParam),Inline,At(10,,170,30)
+      #Sheet, HScroll
+      #Tab('0&1 %Parameter')
+      #Display('')
+      #Display('%Symbol Name / %Parameter')
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam3ParamListSymbolParam,Req,At(10,,175,10)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam3ParamListSymbolParam),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam3ParamListSymbolParam))')
+      #Validate(%ISTB3valValidateNamingSchemaSymbolPrefix(%ISTB3CodePromptTypeParam3ParamListSymbolParam),'Invalid Naming Schema')
+      #Validate(%ISTB3valValidateSymbol(%ISTB3CodePromptTypeParam3ParamListSymbolParam),'Invalid Naming Schema')
+      #EndTab
+      #Tab('0&2 Debug')
+      #Display('')
+      #EndTab
+      #EndSheet
+      #EndButton
+      #EndEnable
+      #EndBoxed
+      #EndEnable
+      #Enable(%PromptParam4Enable)
+      #Boxed('Param 4')
+      #Prompt('Method',From( %PromptParam4Method )),%ISTB3CodePromptTypeParam4Method,At(60,,120)
+      #Enable(%ISTB3CodePromptTypeParam4Method = %PromptParam4EnableText )
+      #Display( %PromptParam4PromptTextText )
+      #Prompt('',Text),%ISTB3CodePromptTypeParam4Text,At(10,,170,30)
+      #Validate(%ISTB3valValidatePromptTypeParam4(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam4Method,%ISTB3CodePromptTypeParam4Text),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam4Method = %PromptParam4EnableString )
+      #Display( %PromptParam4PromptTextString )
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam4String,At(10,,170,10)
+      #Validate(%ISTB3valValidatePromptTypeParam4(%ISTB3CodePromptType,%ISTB3CodePromptTypeParam4Method,%ISTB3CodePromptTypeParam4String),%ISTB3CodePromptValidateErrorMessage)
+      #EndEnable
+      #Enable(%ISTB3CodePromptTypeParam4Method = %PromptParam4EnableGroup )
+      #Button('Default #Group Procedure Name'),At(10,,170,10)
+      #EndButton
+      #Display( '%PromptParam4PromptTextGroup' )
+      #Prompt('',Procedure),%ISTB3CodePromptTypeParam4Group,At(10,,170),Prop(Prop:DropWidth,240)
+      #Validate(%ISTB3valValidateNamingSchemaGroup(%ISTB3CodePromptTypeParam4Group),'Invalid Naming Schema')
+      #Display('%Symbol Name / %Parameter')
+      #Button('Parameters'),Multi(%ISTB3CodePromptTypeParam4ParamList,%ISTB3CodePromptTypeParam4ParamListSymbolParam),Inline,At(10,,170,30)
+      #Sheet, HScroll
+      #Tab('0&1 %Parameter')
+      #Display( '' )
+      #Display('%Symbol Name / %Parameter')
+      #Prompt('',@s255),%ISTB3CodePromptTypeParam4ParamListSymbolParam,Req,At(10,,175,10)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam4ParamListSymbolParam),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeParam4ParamListSymbolParam))')
+      #Validate(%ISTB3valValidateNamingSchemaSymbolPrefix(%ISTB3CodePromptTypeParam4ParamListSymbolParam),'Invalid Naming Schema')
+      #Validate(%ISTB3valValidateSymbol(%ISTB3CodePromptTypeParam4ParamListSymbolParam),'Invalid Naming Schema')
+      #EndTab
+      #Tab('0&2 Debug')
+      #Display( '' )
+      #EndTab
+      #EndSheet
+      #EndButton
+      #EndEnable
+      #EndBoxed
+      #EndEnable
+      #EndEnable
+      #Display( '' )
+      #EndTab
+      #Tab('0&3 Attributes')
+      #Prompt('REQ',Check),%ISTB3CodePromptReq,At(10)
+      #Prompt('Use Default ''Value'' or %Expression()',Check),%ISTB3CodeUseDefault,At(10)
+      #Prompt('Use Multi',Check),%ISTB3CodePromptUseMulti,At(10)
+      #Display('''~Icon.ico'' project file or ''drive:\path\to\icon.ico''')
+      #Prompt('',@s255),%ISTB3CodePromptIcon,At(10,,170)
+      #Display('''Multi Description''')
+      #Prompt('',@s255),%ISTB3CodePromptMultiString,At(10,,170)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptMultiString),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptMultiString))')
+      #Validate(%ISTB3valValidateStringConstant(%ISTB3CodePromptMultiString),'#Validate(%ISTB3valValidateStringConstant(%ISTB3CodePromptMultiString))')
+      #Validate(%ISTB3valStringEncapsulationAdd(%ISTB3CodePromptMultiString),'#Validate(%ISTB3valStringEncapsulationAdd(%ISTB3CodePromptMultiString))')
+      #Prompt('Unique',Check),%ISTB3CodePromptUnique,At(10)
+      #Prompt('Inline',Check),%ISTB3CodePromptInline,At(10)
+      #Prompt('Choice',Check),%ISTB3CodePromptChoice,At(10)
+      #Display('''Radio Value String''')
+      #Prompt('',@s255),%ISTB3CodePromptValueString,At(10,,170)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptValueString),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptValueString))')
+      #Validate(%ISTB3valValidateStringConstant(%ISTB3CodePromptValueString),'#Validate(%ISTB3valValidateStringConstant(%ISTB3CodePromptValueString))')
+      #Validate(%ISTB3valStringEncapsulationAdd(%ISTB3CodePromptValueString),'#Validate(%ISTB3valStringEncapsulationAdd(%ISTB3CodePromptValueString))')
+      #Display('''Selection Description''')
+      #Prompt('',@s255),%ISTB3CodePromptValueSelectionDescription,At(10,,170)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptValueSelectionDescription),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptValueSelectionDescription))')
+      #Validate(%ISTB3valValidateStringConstant(%ISTB3CodePromptValueSelectionDescription),'#Validate(%ISTB3valValidateStringConstant(%ISTB3CodePromptValueSelectionDescription))')
+      #Validate(%ISTB3valStringEncapsulationAdd(%ISTB3CodePromptValueSelectionDescription),'#Validate(%ISTB3valStringEncapsulationAdd(%ISTB3CodePromptValueSelectionDescription))')
+      #Prompt('Use WhenAccepted()',Check),%ISTB3CodePromptUseWhenAccepted,At(10)
+      #Display('Horizontal Scroll bar in the Drop list, or')
+      #Display('use the property PROP(Prop:DropWidth,240)')
+      #Prompt('HScroll',Check),%ISTB3CodePromptHScroll,At(10)
+      #Display('')
+      #EndTab
+      #Tab('0&4 Default(''Value'')')
+      #Boxed('Default')
+      #Prompt('Method',Drop( 'Expression|Group' )),%ISTB3CodePromptTypeDefaultMethod,At(60,,120)
+      #Display( 'Expression' )
+      #Prompt('',Text),%ISTB3CodePromptTypeDefaultText,At(10,,170)
+      #Button('Default #Group Procedure Name'),At(10,,170,10)
+      #EndButton
+      #Display( '%ReturnValueGroup(%pParam1,%pParam2)' )
+      #Prompt('',Procedure),%ISTB3CodePromptTypeDefaultGroup,At(10,,170),Prop(Prop:DropWidth,240)
+      #Validate(%ISTB3valValidateNamingSchemaGroup(%ISTB3CodePromptTypeDefaultGroup),'Invalid Naming Schema')
+      #Display('%Symbol Name / %Parameter')
+      #Button('Parameters'),Multi(%ISTB3CodePromptTypeDefaultParamList,%ISTB3CodePromptTypeDefaultParamListSymbolParam),Inline,At(10,,170,60)
+      #Sheet, HScroll
+      #Tab('0&1 %Parameter')
+      #Display( '' )
+      #Display('%Symbol Name / %Parameter')
+      #Prompt('',@s255),%ISTB3CodePromptTypeDefaultParamListSymbolParam,Req,At(10,,175,10)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeDefaultParamListSymbolParam),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeDefaultParamListSymbolParam))')
+      #Validate(%ISTB3valValidateSymbol(%ISTB3CodePromptTypeDefaultParamListSymbolParam),'Invalid Naming Schema')
+      #EndTab
+      #Tab('0&2 Debug')
+      #Display( '' )
+      #EndTab
+      #EndSheet
+      #EndButton
+      #EndBoxed
+      #EndTab
+      #Tab('0&5 WhenAccepted()')
+      #Boxed('When Accepted')
+      #Prompt('Method',Drop( 'Expression|Group' )),%ISTB3CodePromptTypeWhenAcceptedMethod,At(60,,120)
+      #Display( 'Expression' )
+      #Prompt('',@s255),%ISTB3CodePromptTypeWhenAcceptedText,At(10,,170)
+      #Button('Default #Group Procedure Name'),At(10,,170,10)
+      #EndButton
+      #Display( '%Group' )
+      #Prompt('',Procedure),%ISTB3CodePromptTypeWhenAcceptedGroup,At(10,,170),Prop(Prop:DropWidth,240)
+      #Validate(%ISTB3valValidateNamingSchemaGroup(%ISTB3CodePromptTypeWhenAcceptedGroup),'Invalid Naming Schema')
+      #Display('%Symbol Name / %Parameter')
+      #Button('Parameters'),Multi(%ISTB3CodePromptTypeWhenAcceptedParamList,%ISTB3CodePromptTypeWhenAcceptedParamListSymbolParam),Inline,At(10,,170,60)
+      #Sheet, HScroll
+      #Tab('0&1 %Parameter')
+      #Display( '' )
+      #Display('%Symbol Name / %Parameter')
+      #Prompt('',@s255),%ISTB3CodePromptTypeWhenAcceptedParamListSymbolParam,Req,At(10,,175,10)
+      #Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeWhenAcceptedParamListSymbolParam),'#Validate(%ISTB3valStringEncapsulationRemove(%ISTB3CodePromptTypeWhenAcceptedParamListSymbolParam))')
+      #Validate(%ISTB3valValidateSymbol(%ISTB3CodePromptTypeWhenAcceptedParamListSymbolParam),'Invalid Naming Schema')
+      #EndTab
+      #Tab('0&2 Debug')
+      #Display( '' )
+      #EndTab
+      #EndSheet
+      #EndButton
+      #EndBoxed
+      #EndTab
+      #Tab('0&6 At() / PromptAt()')
+      #Display( '' )
+      #Boxed('AT (x,y,width,height)')
+      #Prompt('AT (x)',Check),%ISTB3CodePromptUseAtX,At(10,40)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptAtX,At(120,40,60,10)
+      #Prompt('AT (,y)',Check),%ISTB3CodePromptUseAtY,At(10,52)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptAtY,At(120,52,60,10)
+      #Prompt('AT (,,width)',Check),%ISTB3CodePromptUseAtWidth,At(10,64)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptAtWidth,At(120,64,60,10)
+      #Prompt('AT (,,,height)',Check),%ISTB3CodePromptUseAtHeight,At(10,76)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptAtHeight,At(120,76,60,10)
+      #EndBoxed
+      #Button('C6 #Button Full Width'),At(10,,175,12),WhenAccepted(%ISTB3grpSetAtButtonFullWidth(%ISTB3CodePromptAtX,%ISTB3CodePromptAtY,%ISTB3CodePromptAtWidth,%ISTB3CodePromptAtHeight))
+      #EndButton
+      #Button('Zero At() Dimensions'),At(10,,175,12),WhenAccepted(%ISTB3grpSetAtResetDimensions(%ISTB3CodePromptAtX,%ISTB3CodePromptAtY,%ISTB3CodePromptAtWidth,%ISTB3CodePromptAtHeight))
+      #EndButton
+      #Display( '' )
+      #Boxed('PromptAT (x,y,width,height)')
+      #Prompt('PromptAT (x)',Check),%ISTB3CodePromptPromptUseAtX,At(10,146)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptPromptAtX,At(120,146,60,10)
+      #Prompt('PromptAT (,y)',Check),%ISTB3CodePromptPromptUseAtY,At(10,158)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptPromptAtY,At(120,158,60,10)
+      #Prompt('PromptAT (,,width)',Check),%ISTB3CodePromptPromptUseAtWidth,At(10,170)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptPromptAtWidth,At(120,170,60,10)
+      #Prompt('PromptAT (,,,height)',Check),%ISTB3CodePromptPromptUseAtHeight,At(10,182)
+      #Prompt('',Spin(@n3,0,500)),%ISTB3CodePromptPromptAtHeight,At(120,182,60,10)
+      #EndBoxed
+      #Button('C6 #Button Full Width'),At(10,,175,12),WhenAccepted(%ISTB3grpSetAtButtonFullWidth(%ISTB3CodePromptPromptAtX,%ISTB3CodePromptPromptAtY,%ISTB3CodePromptPromptAtWidth,%ISTB3CodePromptPromptAtHeight))
+      #EndButton
+      #Button('Zero PromptAt() Dimensions'),At(10,,175,12),WhenAccepted(%ISTB3grpSetAtResetDimensions(%ISTB3CodePromptPromptAtX,%ISTB3CodePromptPromptAtY,%ISTB3CodePromptPromptAtWidth,%SITB3CodePromptPromptAtHeight))
+      #EndButton
+      #Display( '' )
+      #Display( '' )
+      #Display( '' )
+      #EndTab
+      #Tab('0&7 #! Comment')
+      #Display( '' )
+      #EndTab
+      #Tab('0&8 Debug')
+      #Display( '%ISTB3CodePromptOutputCodeLine' )
+      #Prompt( '', Text ), %ISTB3CodePromptOutputCodeLine, Default( '#Prompt( )' ),At(10,,170,150)
+      #Prompt( 'Procedure', Procedure ), %ISTB3CodePromptProc
+      #Validate(%ISTB3valCodePromptOutputCodeLine(%ISTB3CodePromptOutputCodeLine),'#Validate(%ISTB3CodePromptOutputCodeLine()' )
+      #Prompt('Last %ISTB3CodePromptType',@s255),%LastISTB3CodePromptType
+      #EndTab
+      #EndSheet
+      #Indent(-100)
+      %ISTB3CodePromptOutputCodeLine
+      #Group(%ISTB3CodePromptTerminator)

@@ -1,0 +1,291 @@
+GlobalPropProcedureNameGenerateTemplate )
+    #Set(%StrPosResult4739,StrPos(%Procedure,%RegEx4739,%TB2GlobalPropNoCaseSensitivity ))
+
+    #IF(%StrPosResult4739 = 1)
+        #Accept
+    #Else
+        #Reject
+    #End
+
+#EndIF
+#EndRestrict
+#Display('#Group template'),At(0,,200),Prop(Prop:FontColor,0FFFFFFH),Prop(Prop:Background,00000FFH),Prop(Prop:CenterOffSet,0)
+#Display(%TB2GlobalPropTemplatePrefix & %TB2GlobalPropProcedureNameGenerateTemplate),At(0,,200),Prop(Prop:FontColor,0FFFFFFH),Prop(Prop:Background,00000FFH),Prop(Prop:CenterOffSet,0)
+%#Group(%('%'&%Procedure)),Auto
+
+%#Call(%%TB2grpGenerateTemplate01ProjectTargetFileCheck)        %#!If an exe or dll file is named, show message to remove it from Project settings.
+%#Call(%%TB2grpGenerateTemplate02IncrementNextBuildNumber)
+%#Call(%%TB2grpGenerateTemplate03CreateTemplateOutputFolder)
+%#Call(%%TB2grpGenerateTemplate04CreateNextFilename)
+%#Call(%%TB2grpGenerateTemplate05ExportTXA)                     %#! If option is ticked
+%#Call(%%TB2grpGenerateTemplate06FirstProcedureTemplate)        %#! Program Extension typically .tpl
+%#Call(%%TB2grpGenerateTemplate07RemainingTemplates)           %#! Module Extension typically .tpw
+%#Call(%%TB2grpGenerateTemplate08CreateFileSummary)
+%#Call(%%TB2grpGenerateTemplate09SaveNextBuildNoToFile)         %#! If the template file is generated, save the build number to the build file.
+%#Call(%%TB2grpGenerateTemplate10EditRedirectionFileReminder)
+%#Abort
+%#Group(%%TB2grpGenerateTemplate01ProjectTargetFileCheck)
+
+%#IF(%%ProjectTarget)
+    %#Error('Remove the Target File (.exe or .dll) from the Project Settings')
+    %#Abort
+%#EndIF
+%#Group(%%TB2grpGenerateTemplate02IncrementNextBuildNumber)
+
+%#Set(%%TB2GlobalPropNextBuildNumber,%%TB2GlobalPropLastBuildNumber + 1 )
+%#Group(%%TB2grpGenerateTemplate03CreateTemplateOutputFolder),Auto
+%#! Always trailing back slashes
+%#IF(NOT %%TB2GlobalPropTemplateOutputFolder )    %#! Abort
+    %#Error(%%Procedure & '<32,10>Template Output Folder (%%TB2GlobalPropTemplateOutputFolder) is not set' )
+    %#Abort
+%#ENDIF
+
+%#IF(NOT %%TB2GlobalPropNextBuildNumber )     %#! Abort
+    %#Error(%%Procedure & '<32,10>Next Build Number (%%TB2GlobalPropNextBuildNumber) is not set.')
+    %#Abort
+%#EndIF
+
+%#IF(NOT %%TB2GlobalPropBuildNoOptions)       %#!Abort
+    %#Error(%%Procedure & '<32,10>Build Number Options (%%TB2GlobalPropBuildNoOptions) is not set.')
+    %#Abort
+%#EndIF
+
+%#! Error(%%Procedure & '<32,10>%%TB2GlobalPropTemplateOutputFolder: ' & %%TB2GlobalPropTemplateOutputFolder )
+
+%#IF(%%TB2GlobalPropBuildNoOptions<>4)
+
+%#Set(%%TB2GlobalPropNextFolder,%%TB2GlobalPropTemplateOutputFolder)
+
+%#EndIF      %#!Not Option 4
+
+%#IF(%%TB2GlobalPropBuildNoOptions=4)   %#! Create a build number subfolder
+
+%#! Check %%TB2GlobalPropTemplateOutputFolder Folder Exists, if not Create
+
+%#Declare(%%pIO)
+%#Declare(%%ValReturn)
+
+%#Set(%%pIO,%%TB2GlobalPropTemplateOutputFolder)
+
+%#RunDll('C6FolderExists.dll','C6FOLDEREXISTS@FRsc',%%pIO),Release,Win32      
+
+%#IF(%%pIO <> %%True )
+
+    %#Set(%%pIO,%%TB2GlobalPropTemplateOutputFolder)
+    %#RunDll('C6FolderCreate.dll','C6FOLDERCREATE@FRsc',%%pIO),Release,Win32   %#! Cant create a Folder with a back slash, this dll needs updating
+
+    %#IF(%%pIO <> %%True )
+
+        %#Error(%%Procedure & '<32,10>Unable to create Template Output Folder %%TB2GlobalPropTemplateOutputFolder' & %%TB2GlobalPropTemplateOutputFolder )
+        %#Abort
+
+    %#EndIF
+
+
+%#EndIF
+
+%#! Check %%TB2GlobalPropTemplateOutputFolder & %%TB2GlobalPropNextBuildNumber Folder Exists, if not Create
+
+%#Set(%%TB2GlobalPropNextFolder, %%TB2GlobalPropTemplateOutputFolder & Format(%%TB2GlobalPropNextBuildNumber,@n05) & '\' )
+
+%#!Error(%%Procedure &'<32,10>%%TB2GlobalPropNextFolder: ' & %%TB2GlobalPropNextFolder)
+
+%#Set(%%pIO,%%TB2GlobalPropNextFolder )
+%#RunDll('C6FolderExists.dll','C6FOLDEREXISTS@FRsc',%%pIO),Release,Win32   
+
+%#!Error(%%Procedure &'<32,10>%%pIO ' & %%pIO)
+
+%#IF(%%pIO <> %%True )
+
+    %#Set(%%pIO,%%TB2GlobalPropNextFolder )
+    %#RunDll('C6FolderCreate.dll','C6FOLDERCREATE@FRsc',%%pIO),Release,Win32
+
+    %#!Error(%%Procedure &'<32,10>%%pIO ' & %%pIO)
+
+    %#IF(%%pIO <> %%True )
+        %#Error(%%Procedure & '<32,10>Unable to create Template Output Folder %%TB2GlobalPropNextFolder' & %%TB2GlobalPropNextFolder )
+        %#Abort
+    %#EndIF
+
+%#EndIF
+
+%#EndIF      %#!Option 4 check
+
+
+%#Group(%%TB2grpGenerateTemplate04CreateNextFilename)
+
+%#IF(NOT %%TB2GlobalPropBuildNoOptions)
+    %#Error(%%Procedure & '<32,10>Build No Options (%%TB2GlobalPropBuildNoOptions) not set.')
+    %#Abort
+%#EndIF
+
+%#IF(NOT %%TB2GlobalPropBuildNoAffixOptions)
+    %#Error(%%Procedure & '<32,10>Build No Affix Options (%%TB2GlobalPropBuildNoAffixOptions) not set.')
+    %#Abort
+%#EndIF
+
+%#Set(%%TB2GlobalPropNextFilename,%%Application)   %#! Option 1 and 4
+
+%#IF(%%TB2GlobalPropBuildNoOptions = 2)           %#! Option 2 Prefix
+    %#Case(%%TB2GlobalPropBuildNoAffixOptions)
+    %#OF(2)
+        %#Set(%%TB2GlobalPropNextFilename,%%TB2GlobalPropLastBuildNumber &'_'& %%Application)
+    %#OF(3)
+        %#Set(%%TB2GlobalPropNextFilename,%%TB2GlobalPropLastBuildNumber &'-'& %%Application)
+    %#OF(4)
+        %#Set(%%TB2GlobalPropNextFilename,%%TB2GlobalPropLastBuildNumber &' '& %%Application)
+    %#EndCase
+%#EndIF
+
+%#IF(%%TB2GlobalPropBuildNoOptions = 3)           %#! Option 3 Postfix
+    %#Case(%%TB2GlobalPropBuildNoAffixOptions)
+    %#OF(2)
+        %#Set(%%TB2GlobalPropNextFilename,%%Application &'_'& %%TB2GlobalPropLastBuildNumber )
+    %#OF(3)
+        %#Set(%%TB2GlobalPropNextFilename,%%Application &'-'& %%TB2GlobalPropLastBuildNumber )
+    %#OF(4)
+        %#Set(%%TB2GlobalPropNextFilename,%%Application &' '& %%TB2GlobalPropLastBuildNumber )
+    %#EndCase
+%#EndIF
+%#Group(%%TB2grpGenerateTemplate05ExportTXA),Auto
+
+%#IF(%%TB2GlobalPropGenerateExportTXA=%%True)
+    %#Declare(%%TB2TXAFilename)
+    %#Set(%%TB2TXAFilename,%%TB2GlobalPropNextFolder & %%TB2GlobalPropNextFilename &'.txa')
+
+    %#Create(%%TB2TXAFilename)
+    %#Export
+    %#Close(%%TB2TXAFilename)
+%#End
+%#Group(%%TB2grpGenerateTemplate06FirstProcedureTemplate),Auto
+
+%#IF(NOT %%FirstProcedure)
+    %#Error(%%Procedure & '<32,10>No First Procedure (%%FirstProcedure) is set.<32,10>C6-:Application > Properties<32,10>C7+:TBA')
+    %#Abort
+%#EndIF
+
+
+%#Find(%%ModuleProcedure,%%FirstProcedure)
+%#IF(NOT %%ModuleProcedure = %%FirstProcedure)
+    %#Error(%%Procedure & '<32,10>First Procedure (%%FirstProcedure) can not be found.<32,10>This should never happen!')
+    %#Abort
+%#EndIF
+
+%#Fix(%%Procedure,%%ModuleProcedure)
+%#Declare(%%TB2TPLFilename)
+%#Set(%%TB2TPLFilename,%%TB2GlobalPropNextFolder & %%Procedure & '.tpl') %#! The .tpl will need to be the %#Module Extension eventually
+%#Create(%%TB2TPLFilename)
+%#Generate(%%Procedure)
+%#Close(%%TB2TPLFilename)
+%#Group(%%TB2grpGenerateTemplate07RemainingTemplates),Auto
+
+%#Declare(%%TB2TPLFilename)
+%#For(%%Module)
+    %#For(%%ModuleProcedure)
+
+        %#IF(%%ModuleProcedure = %%FirstProcedure)
+            %#Cycle
+        %#EndIF
+
+        %#Fix(%%Procedure,%%ModuleProcedure)
+        %#Set(%%TB2TPLFilename,%%TB2GlobalPropNextFolder & %%Procedure &'.tpw')
+
+        %#Create(%%TB2TPLFilename)
+            %#Generate(%%Procedure)
+        %#Close(%%TB2TPLFilename)
+
+    %#EndFor
+%#EndFor
+%#Group(%%TB2grpGenerateTemplate08CreateFileSummary),Auto
+
+%#Declare(%%TB2TPLFilename)
+%#Set(%%TB2TPLFilename,%%TB2GlobalPropNextFolder & %%TB2GlobalPropNextFilename &'_Template_Summary.txt')
+
+%#Create(%%TB2TPLFilename)
+%%%#! Created using TemplateBuild v1 by Intelligent Silicon Ltd.
+%%%#! App File         : %%(%%Application &'.app')
+%%%#! Created Date     : %%(Format(Today(),@d17))
+%%%#! Created Time     : %%(Format(Clock(),@t08))
+%%%#! Output Path      : %%TB2GlobalPropNextFolder
+%%%#! Filename         : %%(%%TB2GlobalPropNextFilename &'.tpl')
+
+%%%#! FirstProcedure   : %%(%%FirstProcedure)
+
+%#For(%%Module),WHERE(%%Module <> %%Program)
+
+%%%#! Module           : %%(%%Module)
+%#For(%%ModuleProcedure)
+%#Fix(%%Pd(CompNH:ComputerID,BRW20.Q.CompNH:ComputerID) ! Field CompNH:ComputerID is a hot field or requires assignment from browse
+  ! Filling in browse options on ComputerOSVersionHistory
+  BRW21.Q &= Queue:Browse:6
+  BRW21.AddSortOrder(,CompOVH:ComputerIDDateTimeUK)        ! Add the sort order for CompOVH:ComputerIDDateTimeUK for sort order 1
+  BRW21.AddRange(CompOVH:ComputerID,Relate:ComputerOSVersionHistory,Relate:Computer) ! Add file relationship range limit for sort order 1
+  BRW21.AddLocator(BRW21::Sort0:Locator)                   ! Browse has a locator for sort order 1
+  BRW21::Sort0:Locator.Init(,CompOVH:Date,1,BRW21)         ! Initialize the browse locator using  using key: CompOVH:ComputerIDDateTimeUK , CompOVH:Date
+  BRW21.AddField(CompOVH:Date,BRW21.Q.CompOVH:Date)        ! Field CompOVH:Date is a hot field or requires assignment from browse
+  BRW21.AddField(CompOVH:Time,BRW21.Q.CompOVH:Time)        ! Field CompOVH:Time is a hot field or requires assignment from browse
+  BRW21.AddField(Loc:BlankColumn,BRW21.Q.Loc:BlankColumn)  ! Field Loc:BlankColumn is a hot field or requires assignment from browse
+  BRW21.AddField(CompOVH:ComputerOSVersionHistoryID,BRW21.Q.CompOVH:ComputerOSVersionHistoryID) ! Field CompOVH:ComputerOSVersionHistoryID is a hot field or requires assignment from browse
+  BRW21.AddField(CompOVH:ComputerID,BRW21.Q.CompOVH:ComputerID) ! Field CompOVH:ComputerID is a hot field or requires assignment from browse
+  ! Filling in browse options on ComputerUsersCurrent
+  BRW22.Q &= Queue:Browse:1
+  BRW22.AddSortOrder(,CompUC:ComputerIDNameUK)             ! Add the sort order for CompUC:ComputerIDNameUK for sort order 1
+  BRW22.AddRange(CompUC:ComputerID,Relate:ComputerUsersCurrent,Relate:Computer) ! Add file relationship range limit for sort order 1
+  BRW22.AddLocator(BRW22::Sort0:Locator)                   ! Browse has a locator for sort order 1
+  BRW22::Sort0:Locator.Init(,CompUC:Name,1,BRW22)          ! Initialize the browse locator using  using key: CompUC:ComputerIDNameUK , CompUC:Name
+  BRW22.AddField(CompUC:Name,BRW22.Q.CompUC:Name)          ! Field CompUC:Name is a hot field or requires assignment from browse
+  BRW22.AddField(CompUCS:Order,BRW22.Q.CompUCS:Order)      ! Field CompUCS:Order is a hot field or requires assignment from browse
+  BRW22.AddField(CompUCS:Setting,BRW22.Q.CompUCS:Setting)  ! Field CompUCS:Setting is a hot field or requires assignment from browse
+  BRW22.AddField(CompUCS:Value,BRW22.Q.CompUCS:Value)      ! Field CompUCS:Value is a hot field or requires assignment from browse
+  BRW22.AddField(Loc:BlankColumn,BRW22.Q.Loc:BlankColumn)  ! Field Loc:BlankColumn is a hot field or requires assignment from browse
+  BRW22.AddField(CompUC:ComputerUsersCurrentID,BRW22.Q.CompUC:ComputerUsersCurrentID) ! Field CompUC:ComputerUsersCurrentID is a hot field or requires assignment from browse
+  BRW22.AddField(CompUC:ComputerID,BRW22.Q.CompUC:ComputerID) ! Field CompUC:ComputerID is a hot field or requires assignment from browse
+  ! Filling in browse options on ComputerUsersStart
+  BRW13.Q &= Queue:Browse:7
+  BRW13.AddSortOrder(,CompUS:ComputerIDNameUK)             ! Add the sort order for CompUS:ComputerIDNameUK for sort order 1
+  BRW13.AddRange(CompUS:ComputerID,Relate:ComputerUsersStart,Relate:Computer) ! Add file relationship range limit for sort order 1
+  BRW13.AddLocator(BRW13::Sort0:Locator)                   ! Browse has a locator for sort order 1
+  BRW13::Sort0:Locator.Init(,CompUS:Name,1,BRW13)          ! Initialize the browse locator using  using key: CompUS:ComputerIDNameUK , CompUS:Name
+  BRW13.AddField(CompUS:Name,BRW13.Q.CompUS:Name)          ! Field CompUS:Name is a hot field or requires assignment from browse
+  BRW13.AddField(CompUSS:Order,BRW13.Q.CompUSS:Order)      ! Field CompUSS:Order is a hot field or requires assignment from browse
+  BRW13.AddField(CompUSS:Setting,BRW13.Q.CompUSS:Setting)  ! Field CompUSS:Setting is a hot field or requires assignment from browse
+  BRW13.AddField(CompUSS:Value,BRW13.Q.CompUSS:Value)      ! Field CompUSS:Value is a hot field or requires assignment from browse
+  BRW13.AddField(Loc:BlankColumn,BRW13.Q.Loc:BlankColumn)  ! Field Loc:BlankColumn is a hot field or requires assignment from browse
+  BRW13.AddField(CompUS:ComputerUsersStartID,BRW13.Q.CompUS:ComputerUsersStartID) ! Field CompUS:ComputerUsersStartID is a hot field or requires assignment from browse
+  BRW13.AddField(CompUS:ComputerID,BRW13.Q.CompUS:ComputerID) ! Field CompUS:ComputerID is a hot field or requires assignment from browse
+  ! Filling in browse options on ComputerUsersHistory
+  BRW14.Q &= Queue:Browse:8
+  BRW14.AddSortOrder(,CompUH:ComputerIDDateTimeNameUK)     ! Add the sort order for CompUH:ComputerIDDateTimeNameUK for sort order 1
+  BRW14.AddRange(CompUH:ComputerID,Relate:ComputerUsersHistory,Relate:Computer) ! Add file relationship range limit for sort order 1
+  BRW14.AddLocator(BRW14::Sort0:Locator)                   ! Browse has a locator for sort order 1
+  BRW14::Sort0:Locator.Init(,CompUH:Date,1,BRW14)          ! Initialize the browse locator using  using key: CompUH:ComputerIDDateTimeNameUK , CompUH:Date
+  BRW14.AddField(CompUH:Date,BRW14.Q.CompUH:Date)          ! Field CompUH:Date is a hot field or requires assignment from browse
+  BRW14.AddField(CompUH:Time,BRW14.Q.CompUH:Time)          ! Field CompUH:Time is a hot field or requires assignment from browse
+  BRW14.AddField(CompUH:Name,BRW14.Q.CompUH:Name)          ! Field CompUH:Name is a hot field or requires assignment from browse
+  BRW14.AddField(CompUHS:Order,BRW14.Q.CompUHS:Order)      ! Field CompUHS:Order is a hot field or requires assignment from browse
+  BRW14.AddField(CompUHS:Setting,BRW14.Q.CompUHS:Setting)  ! Field CompUHS:Setting is a hot field or requires assignment from browse
+  BRW14.AddField(CompUHS:Value,BRW14.Q.CompUHS:Value)      ! Field CompUHS:Value is a hot field or requires assignment from browse
+  BRW14.AddField(Loc:BlankColumn,BRW14.Q.Loc:BlankColumn)  ! Field Loc:BlankColumn is a hot field or requires assignment from browse
+  BRW14.AddField(CompUH:ComputerUsersHistoryID,BRW14.Q.CompUH:ComputerUsersHistoryID) ! Field CompUH:ComputerUsersHistoryID is a hot field or requires assignment from browse
+  BRW14.AddField(CompUH:ComputerID,BRW14.Q.CompUH:ComputerID) ! Field CompUH:ComputerID is a hot field or requires assignment from browse
+  ! Filling in browse options on ComputerAppsCurrent
+  BRW23.Q &= Queue:Browse:9
+  BRW23.AddSortOrder(,CompAC:ComputerIDNameUK)             ! Add the sort order for CompAC:ComputerIDNameUK for sort order 1
+  BRW23.AddRange(CompAC:ComputerID,Relate:ComputerAppsCurrent,Relate:Computer) ! Add file relationship range limit for sort order 1
+  BRW23.AddLocator(BRW23::Sort0:Locator)                   ! Browse has a locator for sort order 1
+  BRW23::Sort0:Locator.Init(,CompAC:Name,1,BRW23)          ! Initialize the browse locator using  using key: CompAC:ComputerIDNameUK , CompAC:Name
+  BRW23.AddField(CompAC:Name,BRW23.Q.CompAC:Name)          ! Field CompAC:Name is a hot field or requires assignment from browse
+  BRW23.AddField(CompACS:Order,BRW23.Q.CompACS:Order)      ! Field CompACS:Order is a hot field or requires assignment from browse
+  BRW23.AddField(CompACS:Settings,BRW23.Q.CompACS:Settings) ! Field CompACS:Settings is a hot field or requires assignment from browse
+  BRW23.AddField(CompACS:Value,BRW23.Q.CompACS:Value)      ! Field CompACS:Value is a hot field or requires assignment from browse
+  BRW23.AddField(Loc:BlankColumn,BRW23.Q.Loc:BlankColumn)  ! Field Loc:BlankColumn is a hot field or requires assignment from browse
+  BRW23.AddField(CompAC:ComputerAppsCurrentID,BRW23.Q.CompAC:ComputerAppsCurrentID) ! Field CompAC:ComputerAppsCurrentID is a hot field or requires assignment from browse
+  BRW23.AddField(CompAC:ComputerID,BRW23.Q.CompAC:ComputerID) ! Field CompAC:ComputerID is a hot field or requires assignment from browse
+  ! Filling in browse options on ComputerAppsCurrentFiles
+  BRW24.Q &= Queue:Browse:10
+  BRW24.AddSortOrder(,CompACF:ComputerAppsCurrentIDOrderUK) ! Add the sort order for CompACF:ComputerAppsCurrentIDOrderUK for sort order 1
+  BRW24.AddRange(CompACF:ComputerAppsCurrentID,Relate:ComputerAppsCurrentFiles,Relate:ComputerAppsCurrent) ! Add file relationship range limit for sort order 1
+  BRW24.AddLocator(BRW24::Sort0:Locator)                   ! Browse has a locator for sort order 1
+  BRW24::Sort0:Locator.Init(,CompACF:Order,1,BRW24)        ! Initialize the browse locator using  using key: CompACF:ComputerAppsCurrentIDOrderUK , CompACF:Order
+  BRW24.AddField(CompACF:Order,BRW24.Q.CompACF:Order)      ! Field CompACF:Order is a hot field or requires assignment from browse
+  BRW24.AddField(CompACF:Folder,BRW24.Q.CompACF:Folder)    ! Field CompACF:Folder is a hot field or requires assignment from browse
