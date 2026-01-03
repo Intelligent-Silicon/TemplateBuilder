@@ -62,7 +62,7 @@ This also means, the template builder could generate code in any language for an
 ```
 
 
-You can stack multiple #Validates after a #Prompt, this is one of many undocumented features in the template language, which then enables you to standardised the template prompts validation process, by passing parameters which use the \* prefix. This way you can ensure the data keyed into a prompt is valid, without having to deal with Return Values and the issues that comes with, namely invalid datatypes.
+You can stack multiple #Validates after a #Prompt, this is one of many undocumented features in the template language, which then enables you to standardised the template prompts validation process, by passing parameters by address and not by value which uses the \* prefix. This way you can ensure the data keyed into a prompt is valid, without having to deal with Return Values and the issues that comes with, namely invalid datatypes.
 
 
 
