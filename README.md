@@ -94,3 +94,5 @@ See f895759712.txt file.
 
 %#EndIF
 ```
+
+And the problem of having template code writing itself and the issues that comes with that is also shown.
