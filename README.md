@@ -108,19 +108,17 @@ See f895759712.txt file.
 %#EndIF
 ```
 
-And the problem of having template code writing itself and the issues that comes with that is also shown.
-
 
 
 ### How to build your own Template Builder
 
-The firt version had to be written as hand code. Subsequent versions could be run in the AppGen to continue building new features and functionality, effectively continue to build upon itself.
+The first version had to be written as hand code. Subsequent versions could be run in the AppGen to continue building new features and functionality, effectively continuing to build upon itself.
 
-You have to identify the template language functions which would be needed to build a basic version capable of writing out a new version of the template.
+You have to identify the template language functions which would be needed to build a basic version capable of writing out a new version of the template. a subset of the template language functions that are considered essential. Think of this like a layer, which is all too common in programming when considering machine code had to be used to make programming languages and everything gets built upon and expanded with new functionality as time goes by.
 
-The Template would be broken down into the usual sections. One would be the framework, so an AppGen procedure would produce one of the template functions. The other section was a procedure template which would write out the template code for a template function. 
+The Template would be broken down into the usual sections. One part would be the framework. The other section was a procedure template which would write out the template language code for a template function. 
 
-When you are at this stage, you can include the template language function which are not needed in the first version. 
+When you are at this stage, you can include the extra template language functions which are not needed in the first version. 
 
 From there, you can build on the template and include the functions like colour, position, any validates you want to include in order to ensure no mistakes occur, etc etc.
 
