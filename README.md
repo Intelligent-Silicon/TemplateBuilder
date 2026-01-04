@@ -5,7 +5,7 @@ Not complete, but files will show how it was constructed.
 
 Files recovered using PhotoRec, OSForensics couldnt recover any files in the end.
 
-Example Nameing Schema
+Example Naming Schema
 
 %TB2valStringEncapsulationRemove
 
@@ -23,11 +23,15 @@ Why is this public?
 This is all I have left to prove what I had been doing for about 5 years.
 
  
-Prior to this, I'd probably spent another 5 years experimenting with different apps (exe's) and templates to explore ways to develop an app that could write templates. This was pursued first because of the problem which exists that its currently impossible to secure a template and prevent it from being copied, where as exe's can be secured more easily to prevent them from being copied. 
+Prior to this, I'd probably spent another 5 years experimenting with different apps (exe's) and templates to explore ways to develop an app that could write templates. 
 
-Why is this important? Here in Exeter if you cant prove what you have been doing using social media, the people of Exeter and quite likely elsewhere in the UK will automatically assume the worst which is you have been in prison for a number of years. Thanks Zuck!
+This was pursued first because of the problem which exists that its currently impossible to secure a template and prevent it from being copied, where as exe's can be secured more easily to prevent them from being copied. 
 
-So in order to avoid any further personal trouble and attacks because the state both local and national will not deviate from its processes, because they exist for a reason, and I'm coming up to a year (Jan 4th) rough sleeping on the streets, I'm effectively making it known something which will benefit some savvy programmers elsewhere in the world. And the UK then wonder's why its going down the pan, when people are forced to give away their competitive advantage and years of work!	
+Why is this important? Here in Exeter if you cant prove what you have been doing using social media, the people of Exeter and quite likely elsewhere in the UK will automatically assume the worst which is you have been in prison for a number of years. Thanks Zuck and two fingers to those who believe we should have no privacy!
+
+So in order to avoid any further personal trouble and attacks because the state both local and national will not deviate from its processes, because they exist for a reason, even if that reason is unknown, and I'm coming up to a year (Jan 4th) rough sleeping on the streets. I'm effectively making it known something which will benefit some savvy programmers elsewhere in the world. And the UK then wonder's why its going down the pan, when people are forced to give away their competitive advantage and years of work!	
+
+I was experiencing lots of problems with an offline development computer that are considered impossible to occur, but for all intents and purposes my computer was being hacked even though it was offline, I also needed something like the Template Builder that could build code that worked. At times the Clarion compiler and resultant apps when they could compiled acted like they were being hacked in realtime and yet this was an offline computer. Code that should have worked no longer would, it was like I was living in a parallel universe. Even shipped example apps would not work.
 
 At the same time, it pains me to see years of work go to waste, especially if I'm not around to see it built, so maybe someone else will see how the templates can be used to build themselves and then expanded with #RunDll especialy in todays world of very long Markov Chains aka Large Language Models (LLM)'s like ChatGPT.
 
