@@ -47,6 +47,12 @@ I'd posted some screen shots to Clarionhub.com a few years ago giving away hints
 Sadly my backups got wiped in Feb 2025 and I've not been able to recover them, so whats included are examples of recovered files for someone else to pick up the batten so to speak if they want. Unfortunately circumstances here in the UK prohibit me from getting on.
 
 
+Why would you want something like this? 
+
+You can use the Template Builder to build a Scratch like system which can then enforce coding standards like the type seen here : https://github.com/tpn/pdfs/blob/master/Joint%20Strike%20Fighter%20Air%20Vehicle%20C%2B%2B%20Coding%20Standards%20-%20Dec%202005%20(Doc.%202RDU00001%20Rev.%20C).pdf, and discussed here : https://news.ycombinator.com/item?id=46183657
+
+
+
 ```
     #Prompt('Name',@s255),%TB2TemplateExtensionName,Req,At(60,,120,10),Default(%TB2grpTemplateExtensionDefaultName(%Procedure))
         #Validate(%TB2valStringEncapsulationRemove(%TB2TemplateExtensionName),'#Validate(%TB2valStringEncapsulationRemove(%TB2TemplateExtensionName))')
