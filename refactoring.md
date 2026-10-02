@@ -52,7 +52,9 @@ Just like with Clarion Windows programs, the need to break up large code bases i
 
 TemplateBuilder now lets the developer break up a single ```.App``` AppGen file template into multiple ```.App``` AppGen files.
 
-This helps to maintain code standards, logical grouping of functionality, readability and maintainability, whilst providing the ability to introduce experimental code to a template quickly and easily. This also enables the developer to introduce their own common template functionality, for enforcing prompt standards and more, across template suites.
+This helps to maintain code standards, logical grouping of functionality, readability and maintainability, whilst providing the ability to introduce experimental code to a template quickly and easily. 
+
+The developer is also able to introduce their own common template functionality, for enforcing prompt standards and more, across template suites.
 
 ![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/externals.jpg)
 
