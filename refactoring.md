@@ -9,7 +9,7 @@ TemplateBuilder has taken refactoring to another level, with the introduction of
 
 Ambifixes are (unique) alphanumeric strings that can be prefixed or suffixed to a procedure name, template name, template description or template group to ensure the correct version is used in a template, or program DLL.
 
-Three types of Ambifixes exist, the rules are show below, which apply globally for each .app file, with an optional procedure level override option for granular levels of customisation.
+Three types of Ambifixes exist, the rules are shown below, which apply globally for each .app file, with an optional procedure level override option for granular levels of customisation.
 
 | Ambifix Type | Syntax | RegEx | Notes |
 | -- | -- | -- | -- |
@@ -17,11 +17,13 @@ Three types of Ambifixes exist, the rules are show below, which apply globally f
 | Template Description | String constant | ```^'.?'$``` | https://clarion.help/doku.php?id=string_constants.htm |
 | Group Symbol | Clarion Symbol | ```^%[a-zA-Z0-9]+$``` | |
 
+![Ambifix Global ](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/ambifixglobal.jpg)
+
 Whilst it can now remove the [DLL Hell](https://en.wikipedia.org/wiki/DLL_hell) aspect from your own program DLL's, it doesnt completely remove DLL Hell when using external libraries and it doesnt remove a hacker's ability to use [Shim's](https://cloud.google.com/blog/topics/threat-intelligence/abusing-dll-misconfigurations/) to intercept the data your program is exchanging with DLL's.
 
 A unique Ambifix can be used for every instance of a program that is generated and compiled, or for every instance of template that is built by TemplateBuilder.
 
-You have full control over the Ambifix, you can choose to make it a GUID, a version number, or just an simple alphanumeric string like the type seen with Microsoft Store Apps, provided its compliant with the rules for a label, string or ```%symbol```.
+You have full control over the Ambifix, you can choose to make it a GUID, a version number, or just a simple alphanumeric string like the type seen appended to the end of Microsoft Store Apps, provided its compliant with the rules for a label, string or ```%symbol```.
 
 With Clarion 6's DDE remote control, and Clarion 7+ [Command Line Interface Utility](https://clarion.help/doku.php?id=customizing_the_command_line_interface_clarioncl_exe_.htm&s[]=command&s[]=line), the ability to generate a unique alphanumeric Ambifix, can force more work onto hacker's as the lifespan of their shim's becomes shorter with each new version.
 
@@ -34,7 +36,7 @@ This can be useful for development of new template versions, whilst keeping exis
 
 Once template development is completed, its just as quick switching off Ambifixes and have everything resort back to the original procedure name before shipping the upgraded template to users. This removes the continuity issues where user's have to fill in the template prompts again.
 
-![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/Pics/ambifixes.jpg)
+![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/ambifixes.jpg)
 
 
 
