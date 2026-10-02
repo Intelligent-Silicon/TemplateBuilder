@@ -9,7 +9,7 @@ TemplateBuilder has taken refactoring to another level, with the introduction of
 
 Ambifixes are (unique) alphanumeric strings that can be prefixed or suffixed to a procedure name, template name, template description or template group to ensure the correct version is used in a template, or program DLL.
 
-Three types of Ambifixes exist, the rules are shown below, which apply globally for each .app file, with an optional procedure level override option for granular levels of customisation.
+Three types of Ambifixes currently exist, the rules are shown below, which apply globally for each ```.App``` file, with an optional procedure level override for procedure level customisation.
 
 | Ambifix Type | Syntax | RegEx | Notes |
 | -- | -- | -- | -- |
