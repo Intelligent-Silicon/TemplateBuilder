@@ -54,7 +54,7 @@ TemplateBuilder now lets the developer break up a single ```.App``` AppGen file 
 
 This helps to maintain code standards, logical grouping of functionality, readability and maintainability, whilst providing the ability to introduce experimental code to a template quickly and easily. 
 
-The developer is also able to introduce their own common template functionality, for enforcing prompt standards and more, across template suites.
+The developer is also able to introduce their own common template functionality, for enforcing prompt standards and more, across template suites, exceeding the functionality built into the base template language.
 
 ![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/externals.jpg)
 
