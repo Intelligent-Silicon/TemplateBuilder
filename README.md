@@ -6,7 +6,7 @@ Compatible Versions: C6 or later.
 
 ### General
 
-Clarion TemplateBuilder is a clarion template that runs in the AppGen and generates templates and template code.
+Clarion TemplateBuilder is a clarion template that runs in the AppGen generating templates and template code.
 
 For a more detailed info of a Clarion Template visit https://clarion.help/doku.php?id=what_templates_are.htm
 
