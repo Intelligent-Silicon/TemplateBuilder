@@ -9,9 +9,15 @@ TemplateBuilder has taken refactoring to another level, with the introduction of
 
 Ambifixes are (unique) alphanumeric strings that can be prefixed or suffixed to a procedure name, template name, template description or template group to ensure the correct version is used in a template, or program DLL.
 
-3 Ambifixes currently exist, one for the Template name, that complies with the rules of defining a Label, one for the description string which has few rules due to it being a string, and one for ```#Group``` names, that complies with rules for using a template ```%symbol```.
+Three types of Ambifixes exist, the rules are show below, which apply globally for each .app file, with an optional procedure level override option for granular levels of customisation.
 
-Whilst it can now remove the [DLL Hell](https://en.wikipedia.org/wiki/DLL_hell) aspect from your own program DLL's, it doesnt completely remove the hacker's ability to use [Shim's](https://cloud.google.com/blog/topics/threat-intelligence/abusing-dll-misconfigurations/) to intercept the data your program is exchanging with DLL's.
+| Ambifix Type | Syntax | RegEx | Notes |
+| -- | -- | -- | -- |
+| Template Name | Clarion Label | ```^[a-zA-Z_][a-zA-Z0-9_:\.]+$```] | https://clarion.help/doku.php?id=declaration_and_statement_labels.htm also used for AppGen procedure names. |
+| Template Description | String constant | ```^'.?'$``` | https://clarion.help/doku.php?id=string_constants.htm |
+| Group Symbol | Clarion Symbol | ```^%[a-zA-Z0-9]+$``` | |
+
+Whilst it can now remove the [DLL Hell](https://en.wikipedia.org/wiki/DLL_hell) aspect from your own program DLL's, it doesnt completely remove DLL Hell when using external libraries and it doesnt remove a hacker's ability to use [Shim's](https://cloud.google.com/blog/topics/threat-intelligence/abusing-dll-misconfigurations/) to intercept the data your program is exchanging with DLL's.
 
 A unique Ambifix can be used for every instance of a program that is generated and compiled, or for every instance of template that is built by TemplateBuilder.
 
