@@ -40,8 +40,21 @@ This can be useful for side by side development of new template versions, whilst
 
 Once template development is completed, its just as quick switching off Ambifixes and have everything resort back to the original template name or group symbol name, both derived from the procedure name used in the AppGen before shipping the upgraded template to users. This final step also removes the continuity issues where user's have to refill the template prompts again, whilst giving template developers the option to introduce new templates as seen with the Edit-In-Place templates.
 
+The ability to switch off Ambifixes at the global ```.App``` file level and procedure levels, also enables common template code functionality to be used to create template language library's to ensure a high standard of compliance is maintained when filling in template prompts. A shared or common template code library can enforce a template prompt string is capitalised, has no spaces or underscores, complies to naming schemes and more...
+
 ![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/ambifixes.jpg)
 
+
+
+### Breaking up a Template
+
+Just like with Clarion Windows programs, the need to break up large code bases into smaller sections often arises over time. See https://clarion.help/doku.php?id=development_and_deployment_strategies.htm&s[]=sub&s[]=application
+
+TemplateBuilder now lets the developer break up a single ```.App``` AppGen file template into multiple ```.App``` AppGen files.
+
+This helps to maintain code standards, logical grouping of functionality, readability and maintainability, whilst providing the ability to introduce experimental code to a template quickly and easily. This also enables the developer to introduce their own common template functionality, for enforcing prompt standards and more, across template suites.
+
+![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/externals.jpg)
 
 
 
