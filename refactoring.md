@@ -59,6 +59,6 @@ The developer is also able to introduce their own common template functionality,
 ![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/externals.jpg)
 
 
-
+ClassWriter3 currently sits at over 550 procedures across multiple ```.App``` files, with more functionality being added daily, to ensure new users can get up to speed on their first attempt, without having to consult help documentation!
 
 
