@@ -78,4 +78,4 @@ ClassWriter3 currently sits at over 550 procedures across multiple ```.App``` fi
 
 ![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/classwriter3.1.jpg)
 
-To create a new version of a template, copy the existing app files into a new folder, update the Ambifixes in each ```.App``` file and generated the template code. Its that simple.
+To create a new version of a template, copy the existing app files into a new folder, update the Ambifixes in each ```.App``` file and generate the template code. Its that simple and easy.
