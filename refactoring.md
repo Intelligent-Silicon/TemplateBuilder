@@ -48,13 +48,13 @@ Class Writer 2 doesnt use Ambifixes, Class Writer 3 and 3.1 do, enabling all thr
 
 The prompts stay identical, but as ClassWriter is its own independent template chain, to switch between different versions currently requires an export to a TXA file, the template particulars changed and then the TXA imported into a new app.
 
-If these templates were any other template type that works with a template chain like the ABC, Clarion or CWHandyTools, in the AppGen its as simple as just uninstalling one version and install another. 
+If these templates were any other template type that works with a template chain like the ABC, Clarion or CWHandyTools, inside the AppGen its as simple as just uninstalling one version and installing another. 
 
-Its as simple as that because the prompts can remain the same. 
+Its as simple as that because the prompts can remain the same and the AppGen keeps a record of all prompts used even after a template has been removed from an app. 
 
-This way developers can work on their time line, and can choose what version 3rd party developers offer. 
+This way developers can work on their time line, and can choose the 3rd party developers version that bests suits their needs.
 
-However that gets a bit muddy because in practice, generally bug fixes are rolled into new versions along with new features because it currently takes additional resource to maintain multiple branches, although TemplateBuilder now makes this much much easier.
+However that gets a bit muddy because in practice, because currently bug fixes are generally rolled into new versions along with new features because it currently takes additional resource to maintain multiple branches, although TemplateBuilder now makes this much much easier.
 
 
 
@@ -78,4 +78,4 @@ ClassWriter3 currently sits at over 550 procedures across multiple ```.App``` fi
 
 ![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/classwriter3.1.jpg)
 
-To create a new verson of a template, copy the existing app files into a new folder, update the Ambifixes in each ```.App``` file and generated the template code. Its that simple.
+To create a new version of a template, copy the existing app files into a new folder, update the Ambifixes in each ```.App``` file and generated the template code. Its that simple.
