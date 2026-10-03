@@ -44,6 +44,18 @@ The ability to switch off Ambifixes at the global ```.App``` file level and proc
 
 ![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/ambifixes.jpg)
 
+Class Writer 2 doesnt use Ambifixes, Class Writer 3 and 3.1 do, enabling all three templates to co-exist in the template registry without any interaction between them or any other template.
+
+The prompts stay identical, but as ClassWriter is its own independent template chain, to switch between different versions currently requires an export to a TXA file, the template particulars changed and then the TXA imported into a new app.
+
+If these templates were any other template type that works with a template chain like the ABC, Clarion or CWHandyTools, in the AppGen its as simple as just uninstalling one version and install another. 
+
+Its as simple as that because the prompts can remain the same. 
+
+This way developers can work on their time line, and can choose what version 3rd party developers offer. 
+
+However that gets a bit muddy because in practice, generally bug fixes are rolled into new versions along with new features because it currently takes additional resource to maintain multiple branches, although TemplateBuilder now makes this much much easier.
+
 
 
 ### Breaking up a Template
@@ -62,3 +74,8 @@ The developer is also able to introduce their own common template functionality,
 ClassWriter3 currently sits at over 550 procedures across multiple ```.App``` files, with more functionality being added daily, to ensure new users can get up to speed on their first attempt, without having to consult help documentation!
 
 
+![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/classwriter3.jpg)
+
+![Ambifixes](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/classwriter3.1.jpg)
+
+To create a new verson of a template, copy the existing app files into a new folder, update the Ambifixes in each ```.App``` file and generated the template code. Its that simple.
