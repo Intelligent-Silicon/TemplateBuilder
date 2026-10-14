@@ -40,7 +40,7 @@ In terms of templates, the Ambifix ensures a template can only load the correct 
 
 This can be useful for side by side development of new template versions, whilst keeping existing versions registered in the Template Registry, without any conflict.
 
-Once template development is completed, its just as quick switching off Ambifixes and have everything resort back to the original template name or group symbol name, both derived from the procedure name used in the AppGen before shipping the upgraded template to users. This final step also removes the continuity issues where user's have to refill the template prompts again, whilst giving template developers the option to introduce new templates as seen with the Edit-In-Place templates.
+Once template development is completed, its just as quick switching off Ambifixes and have everything resort back to the original template name or group symbol name, both derived from the procedure name used in the AppGen before shipping the upgraded template to users. This final step also removes the continuity issues where user's have to refill the template prompts again, whilst giving template developers the option to introduce new templates as seen with the 2nd generation Edit-In-Place templates.
 
 The ability to switch off Ambifixes at the global ```.App``` file level and procedure levels, also enables common template code functionality to be used to create template language library's to ensure a high standard of compliance is maintained when filling in template prompts. A shared or common template code library can enforce a template prompt string is capitalised, has no spaces or underscores, complies to naming schemes and more...
 
