@@ -56,7 +56,9 @@ Its as simple as that because the prompts can remain the same and the AppGen kee
 
 This way developers can work on their time line, and can choose the 3rd party developers version that bests suits their needs.
 
-However that gets a bit muddy because in practice, currently bug fixes are generally rolled into new versions along with new features because it takes additional resource to maintain multiple branches, although TemplateBuilder now makes this much much easier.
+However that gets a bit muddy because in practice, currently bug fixes are generally rolled into new template versions along with new features because it takes additional resource to maintain multiple branches over templates, although TemplateBuilder now makes it much much easier to maintain multiple branches of templates.
+
+This can also apply to the Clarion.Net templates and wider .Net templates to mirror the different versions of .Net Frameworks.
 
 
 
