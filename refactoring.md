@@ -29,7 +29,7 @@ And if using a new unique GUID for every workstation a program is to be installe
 
 A unique Ambifix can be used for every instance of a program that is generated and compiled, or for every instance of a template that is built by TemplateBuilder.
 
-You have full control over the Ambifix, you can choose to make it a GUID, a version number, or just a simple alphanumeric string like the type seen appended to the end of Microsoft Store App, provided its compliant with the rules for a label, string constant or ```%symbol```.
+You have full control over the Ambifix, you can choose to make it a GUID, a version number, or just a simple alphanumeric string like the type seen appended to the end of Microsoft Store Apps, provided its compliant with the rules for a label, string constant or ```%symbol```.
 
 With Clarion 6's DDE remote control, and Clarion 7+ [Command Line Interface Utility](https://clarion.help/doku.php?id=customizing_the_command_line_interface_clarioncl_exe_.htm&s[]=command&s[]=line), the ability to generate a unique alphanumeric Ambifix, can force more work onto hacker's as the lifespan of their shim's becomes shorter with each new version.
 
