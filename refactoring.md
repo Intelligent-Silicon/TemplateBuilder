@@ -16,6 +16,8 @@ Three types of Ambifixes currently exist, the rules are shown below, which apply
 | Template Name | Clarion Label | ```^[a-zA-Z_][a-zA-Z0-9_:\.]+$```] | https://clarion.help/doku.php?id=declaration_and_statement_labels.htm also used for AppGen procedure names. |
 | Template Description | String constant | ```^'.?'$``` | https://clarion.help/doku.php?id=string_constants.htm |
 | Group Symbol | Clarion Symbol | ```^%[a-zA-Z0-9]+$``` | |
+| Prompt Symbol | Clarion Symbol | ```^%[a-zA-Z0-9]+$``` | |
+| Filename | OS Filename Syntax\* | ```^%[a-zA-Z0-9\._]+$``` | See RegEx namely underscore and period allowed |
 
 ![Ambifix Global ](https://github.com/Intelligent-Silicon/TemplateBuilder/blob/main/pics/ambifixglobal.jpg)
 
