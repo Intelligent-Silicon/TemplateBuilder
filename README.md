@@ -20,7 +20,7 @@ The speed and simplicity for generating and compiling a MS Windows app using the
 
 TemplateBuilder can call external Windows DLL's to interact with other development tools, including external internet services, internal services, Cloud based and local Ai LLM's, and any number of housekeeping tools to aid the development of coding projects.
 
-If you are still not sure what the Clarion Template language is, then read the comments on [Hacker News](https://news.ycombinator.com/item?id=50106792) and read this blog post on the [C PreProcessor](https://www.davidpriver.com/Fun-Extending-the-C-Preprocessor.html).
+If you are still not sure what the Clarion Template language is, then read the comments on [Hacker News](https://news.ycombinator.com/item?id=50106792) and read this blog post on the [C PreProcessor](https://www.davidpriver.com/Fun-Extending-the-C-Preprocessor.html). The Clarion Template language is like an evolved preprocessor language.
 
 ### Public Info
 
