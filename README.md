@@ -30,5 +30,8 @@ If you are still not sure what the Clarion Template language is, then read the c
 [Refactoring](refactoring.md) 
 
 
+[IDE Settings](IDESettings/ReadMe.md) 
+
+
 
 
