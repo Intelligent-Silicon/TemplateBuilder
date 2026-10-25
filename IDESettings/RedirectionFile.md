@@ -2,7 +2,7 @@
 
 The Redirection file contains the folder paths the IDE uses to find or place different files. 
 
-This lets us create templates in different sub folders from an .app file, and provided the path to the subfolder is added to the Redirection File, the Template Registry will find and load.
+This lets us create templates in different sub folders from an ```.app``` file, and provided the path to the subfolder is added to the Redirection File, the Template Registry will find and load.
 
 | Clarion Version | IDE Menu Options | File Location |
 | -- | -- | -- |
@@ -18,7 +18,7 @@ Two DOS [WildCards](https://en.wikipedia.org/wiki/Wildcard_character) are used i
 
 ```?``` match any character once only where it is placed.
 
-MS Windows does not use Case Sensitivity by default unlike *nix operating systems, but with the introduction of Windows Subsystem Linux, mainstream [Case Sensitivity](https://learn.microsoft.com/en-us/windows/wsl/case-sensitivity) was introduced to accommodate *nix running on Windows.
+MS Windows does not use Case Sensitivity by default unlike *nix operating systems, but with the introduction of Windows Subsystem Linux (WSL), mainstream [Case Sensitivity](https://learn.microsoft.com/en-us/windows/wsl/case-sensitivity) was introduced to accommodate *nix running on Windows.
 
 There is however a little known Reg Setting which also controls [Windows Kernel Case Sensitivity](https://learn.microsoft.com/en-us/troubleshoot/sql/database-engine/install/windows/sql-server-not-supported-in-windows-os-where-case-sensitivity-enabled) that has affected programs including MS SQL Server, because MS SQL Server needs Windows to be Case Insensitive regardless of WSL being installed or not, and this applies to earlier versions of Windows which may go all the way back to the start of NT and Windows 3.1.
 
@@ -55,8 +55,8 @@ There are built-in redirection macros, but you can add your own to suit your pro
 
 | Version | Built-in | Folder Location | Redirection File |
 | -- | -- | -- | -- |
-| C6 | %ROOT% | [Clarion installation Folder] eg C:\Clarion6 | C:\Clarion6\BIN\C60[PE|EE].red |
-| C6 | %BIN% | [Clarion installation Folder] eg C:\Clarion6\bin | C:\Clarion6\BIN\C60[PE|EE].red |
+| C6 | %ROOT% | [Clarion installation Folder] eg C:\Clarion6 | C:\Clarion6\BIN\C60[PE\|EE].red |
+| C6 | %BIN% | [Clarion installation Folder] eg C:\Clarion6\bin | C:\Clarion6\BIN\C60[PE\|EE].red |
 | C7+ | %libpath% | Project .lib file folder. For copying Clarion.NET files. Mimics .NET Core assembly behaviour | C:\Clarion11\bin\Clarion110.red |
 | C7+ | %configuration% | For copying Clarion.NET files. Mimics Clarion.NET behaviour | C:\Clarion11\bin\Clarion110.red |
 
@@ -291,7 +291,7 @@ The options for 32bit in C6 are left overs from earlier versions of Clarion when
 
 Today C6 and later versions of Clarion, all compile 32bit EXE/DLL's for Windows.
 
-However TemplateBuilder can operate largely outside of the Project Setting in order to produce templates which can call external compilers and pass settings to these compilers to build programs for any number of OS's and bitness.
+However TemplateBuilder can operate largely outside of the Project Settings in order to produce templates which can call external compilers and pass settings to these compilers to build programs for any number of OS's and bitness.
 
 | Section Name | Project System Switch | C6 | C7+ | Notes |
 | -- | -- | -- | -- | -- |
