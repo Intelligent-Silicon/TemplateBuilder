@@ -223,15 +223,24 @@ The same File Mask can be used on multiple lines, with each pointing to a differ
 *.tp? = "C:\C11 Work\TBFramework"; "C:\C11 Work\TBProcedures"; "C:\C11 Work\TBLanguage"
 ```
 
-Also read this timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/.
+### Search Order Security Risks
 
-Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment variable level and the Clarion Redirection file level, is a great way to slip in malicious source code into a project at compile time, undetected. System Temp folders are also another place to hide malicious code. 
 
-File paths entries can also be found in the Windows Registry working alongside configuration files and the Windows environment variables. 
+This timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/ in particular the Bonus Chatter at the end, highlights the risks involved with Absolute and Relative File paths.
 
-In effect creating 3 places (Registery, Windows Environment Paths, Configuration files) to keep an eye on. 
+Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment level and the Clarion Redirection file level, (or a Registry entry) is a great way to slip in malicious source code into a project at compile time undetected. 
 
-Fortunately this does not generally apply to Clarion as the IDE is limited to the Windows Path environment variables, which is a system wide, application agnostic risky situation, but individual templates can call DLL's which can read and write to the Template Registry and then alter some settings using the Template Language. So be aware. 
+Using the file path orders, to trick Project systems into picking up the wrong file for compiling is the risk. System Temp folders are also another place to hide malicious code. 
+
+Most Coders will be aware of the DLL Search Order function and the vulnerabilities it brings, see https://learn.microsoft.com/en-gb/windows/win32/api/processenv/nf-processenv-searchpatha and see https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setsearchpathmode.
+
+The Windows Environment Variable search order and Configuration File search orders like the Clarion Redirection file is just a variation of the DLL search order attack vector.
+
+File paths entries can also be found in the Windows Registry working alongside configuration files and the Windows environment variables, creating 3 places (Registry, Windows Environment Paths, Configuration files) to keep an eye on. 
+
+Fortunately this does not generally apply to Clarion as the IDE is limited to the Windows Path environment variables, which is a machine wide application agnostic setting, alongside the Clarion Redirection file orders, but individual templates can call DLL's which can read and write to the Template Registry and Templates can alter the search order using the Template Language. 
+
+So be aware. 
 
 Convenience for you, is also convenience for hackers. 
 
