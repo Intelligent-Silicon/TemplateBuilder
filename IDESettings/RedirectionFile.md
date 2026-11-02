@@ -169,7 +169,9 @@ Structure of the wider ```ClarionProperties.xml``` file.
 
 The Redirection File uses the [DOS 8.3 filename syntax](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file?source=recommendations#short-vs-long-names) by default, but does allow long folder (& file) names provided the folder is encompassed with double quotes.
 
-To be aware of all the requirements for how to specify folder and file names, in particular using long folder and file names, visit https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file
+To be aware of all the requirements for how to specify folder and file names, in particular using long folder and file names, visit https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file and read this blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/.
+
+Suffice to say, altering file paths and the order of file paths, both at the Windows System Path level and the Redirection file, is a great way to slip in malicious source code into a project at compile time.
 
 
 | Valid | Path | Notes |
