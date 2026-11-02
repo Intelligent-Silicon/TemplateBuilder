@@ -230,7 +230,9 @@ This timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=
 
 Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment level and the Clarion Redirection file level, (or a Registry entry) is a great way to slip in malicious source code into a project at compile time undetected. 
 
-Using the file path orders, to trick Project systems into picking up the wrong file for compiling is the risk. System Temp folders are also another place to hide malicious code. 
+Using the file path orders, to trick Project systems into picking up the wrong file for compiling is the risk. 
+
+System Temp folders are also another place to hide malicious code. 
 
 Most Coders will be aware of the DLL Search Order function and the vulnerabilities it brings, see https://learn.microsoft.com/en-gb/windows/win32/api/processenv/nf-processenv-searchpatha and see https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setsearchpathmode.
 
