@@ -169,10 +169,7 @@ Structure of the wider ```ClarionProperties.xml``` file.
 
 The Redirection File uses the [DOS 8.3 filename syntax](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file?source=recommendations#short-vs-long-names) by default, but does allow long folder (& file) names provided the folder is encompassed with double quotes.
 
-To be aware of all the requirements for how to specify folder and file names, in particular using long folder and file names, visit https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file and read this timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/.
-
-Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment variable level and the Clarion Redirection file, is a great way to slip in malicious source code into a project at compile time, undetected. So be aware. Convenience for you, is also convenience for hackers. 
-
+To be aware of all the requirements for how to specify folder and file names, in particular using long folder and file names, visit https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file. 
 
 | Valid | Path | Notes |
 | -- | -- | -- |
@@ -182,7 +179,13 @@ Suffice to say, altering file paths and the order of files paths on a line entry
 | No | C:\C6 Work | The space character between C6 and Work is not valid in DOS 8.3 filename syntax | 
 | No | C:\MyC6WorkFolder | The MyC6WorkFolder folder is too long for the DOS 8.3 filename syntax | 
 
+Also read this timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/.
 
+Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment variable level and the Clarion Redirection file, is a great way to slip in malicious source code into a project at compile time, undetected. System Temp folder are also another place to hide malicious code. 
+
+So be aware. 
+
+Convenience for you, is also convenience for hackers. 
 
 ### Redirection File formats
 
