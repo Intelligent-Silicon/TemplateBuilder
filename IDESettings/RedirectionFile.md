@@ -171,7 +171,7 @@ The Redirection File uses the [DOS 8.3 filename syntax](https://learn.microsoft.
 
 To be aware of all the requirements for how to specify folder and file names, in particular using long folder and file names, visit https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file and read this timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/.
 
-Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows System Path level and the Clarion Redirection file, is a great way to slip in malicious source code into a project at compile time, undetected!
+Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment variable level and the Clarion Redirection file, is a great way to slip in malicious source code into a project at compile time, undetected!
 
 
 | Valid | Path | Notes |
