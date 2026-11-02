@@ -240,7 +240,7 @@ The Windows Environment Variable search order and Configuration File search orde
 
 File paths entries can also be found in the Windows Registry working alongside configuration files and the Windows environment variables, creating 3 places (Registry, Windows Environment Paths, Configuration files) to keep an eye on. 
 
-Fortunately this does not generally apply to Clarion as the IDE is limited to the Windows Path environment variables, which is a machine wide application agnostic setting, alongside the Clarion Redirection file orders, but individual templates can call DLL's which can read and write to the Template Registry and Templates can alter the search order using the Template Language. 
+Fortunately this does not generally apply to Clarion as the IDE is limited to the Windows Path environment variables, which is a machine wide application agnostic setting, alongside the Clarion Redirection file orders, but individual templates can call DLL's which can read and write to the Template Registry and Templates can alter the search order or place the IDE in a different current folder using the Template Language. 
 
 So be aware. 
 
