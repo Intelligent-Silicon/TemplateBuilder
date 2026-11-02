@@ -232,7 +232,7 @@ Suffice to say, altering file paths and the order of files paths on a line entry
 
 Using the file path orders, to trick Project systems into picking up the wrong file for compiling is the risk. 
 
-System Temp folders are also another place to hide malicious code. 
+System Temp folders ```%TMP%``` and ```%Temp%``` are also another place to hide malicious code.
 
 Most Coders will be aware of the DLL Search Order function and the vulnerabilities it brings, see https://learn.microsoft.com/en-gb/windows/win32/api/processenv/nf-processenv-searchpatha and see https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setsearchpathmode.
 
