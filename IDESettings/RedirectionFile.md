@@ -179,13 +179,7 @@ To be aware of all the requirements for how to specify folder and file names, in
 | No | C:\C6 Work | The space character between C6 and Work is not valid in DOS 8.3 filename syntax | 
 | No | C:\MyC6WorkFolder | The MyC6WorkFolder folder is too long for the DOS 8.3 filename syntax | 
 
-Also read this timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/.
 
-Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment variable level and the Clarion Redirection file, is a great way to slip in malicious source code into a project at compile time, undetected. System Temp folder are also another place to hide malicious code. 
-
-So be aware. 
-
-Convenience for you, is also convenience for hackers. 
 
 ### Redirection File formats
 
@@ -229,7 +223,21 @@ The same File Mask can be used on multiple lines, with each pointing to a differ
 *.tp? = "C:\C11 Work\TBFramework"; "C:\C11 Work\TBProcedures"; "C:\C11 Work\TBLanguage"
 ```
 
-In C7 there is a new filemask entry for the Template Registry. 
+Also read this timely blog post https://devblogs.microsoft.com/oldnewthing/20261026-00/?p=112797/.
+
+Suffice to say, altering file paths and the order of files paths on a line entry, both at the Windows PATH environment variable level and the Clarion Redirection file level, is a great way to slip in malicious source code into a project at compile time, undetected. System Temp folders are also another place to hide malicious code. 
+
+File paths entries can also be found in the Windows Registry working alongside configuration files and the Windows environment variables. 
+
+In effect creating 3 places (Registery, Windows Environment Paths, Configuration files) to keep an eye on. 
+
+Fortunately this does not generally apply to Clarion as the IDE is limited to the Windows Path environment variables, which is a system wide, application agnostic risky situation, but individual templates can call DLL's which can read and write to the Template Registry and then alter some settings using the Template Language. So be aware. 
+
+Convenience for you, is also convenience for hackers. 
+
+### Template Registry File Mask
+
+In C7 there is a new filemask entry for the Template Registry. It does also work in C6, but its not really advertised and the 3rd party template addon market largely ignores this IDE Environment customisation.
 
 ```
 *.trf = %ROOT%\template\win
